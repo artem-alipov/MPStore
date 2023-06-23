@@ -1,0 +1,48 @@
+<div>
+    {% if user.is_authenticated %}
+        <form action="{% url 'dirictories:create-book' %}">
+          <button class="btn btn-primary">Добавить</button>
+        </form>
+    {% endif %}
+  
+    <div class="container-book">
+      {% for object in object_list %}
+      <div class="book-block">
+        <div class="card" style="width: 100%;">
+  
+          <img src="{{ object.book_picture_medium }}" width="250" height ="300" 
+            style="object-fit: fill" class="card-img-top" alt=" "
+          >
+        
+          <div class="card-body" style="width: 250px;">
+            <div style="height: 80px;">
+              <h5 class="card-title" style="word-break: normal;">{{object.book_name}}</h5>
+            </div>
+            
+  
+            <p class="card-text" style="word-break: normal;">
+              Рейтинг: {{object.rating}}
+            </p>
+            <p class="card-text" style="word-break: normal;height: 40px;">
+              Автор: {{object.autor}}
+            </p>
+            <p class="card-text" style="word-break: normal;">
+              Жанр: {{object.genre}}
+            </p>
+            <p class="card-text" style="word-break: normal;height: 40px;">
+              Год публикации: {{object.year_publishing}}
+            </p>
+            <p class="card-text" style="word-break: normal;">
+              Цена: {{object.book_price}} BYN
+            </p>
+          </div>
+          
+          <a href="{% url 'dirictories:view-book' pk=object.pk %}" 
+            class="btn btn-primary" style ="margin: 0.1rem 0.1rem">Подробнее</a>
+        
+        </div>
+      </div>
+  
+    {%endfor%}
+    </div>
+  </div>
