@@ -1,47 +1,86 @@
 {% extends 'base.html' %}
-
-{% load crispy_forms_tags %}
-
-{% block HEAD %}
+{% block head %}
 <style>
-  .a-hover{
-    text-decoration: none;
+  .form-group {
+      margin-bottom: 20px;
   }
-  .a-hover:hover{
-    text-decoration: underline
+
+  label {
+      display: block;
+      font-weight: bold;
   }
+
+  input[type="text"],
+  input[type="password"] {
+      width: 25%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+  }
+
+  button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+  }
+
+  button:hover {
+      background-color: #45a049;
+  }
+  .form-container {
+    width: 60%;
+    margin: 0 auto; /* центрирование по горизонтали */
+    padding: 20px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
 </style>
-{% endblock HEAD %}
-
-{% block TITLE %}Signup{% endblock TITLE %}
-
-{% block BODY %}
-  
-  <div style ="justify-content: center; align-items: center; display: flex; padding-top: 3%;">
-    <form method="post">
-        {% csrf_token %}
-
-        <div style="width: 500px; height: 730px; border: 3px solid rgba(0, 0, 0, 0.5); border-radius: 20px;">
         
-          <div style="width: 400px; height: 260px; margin-left: 50px; margin-top: 2%;">
-          <h2 style="font-size: 2em; font-family: 'poppins',sans-serif;">
-            Регистрация <ion-icon name="pencil-outline" style="position: absolute; font-size: 1.2em;"></ion-icon>
-          </h2>
-          {{form|crispy}}
-  
-          <input type="submit" value="Зарегистрироваться" class = "btn btn-primary btn-lg"
-            style="width: 100%; padding: 10px; font-size: 16px; margin-top: 10px;">
-          
-          <p style="margin-top: 15px; font-family: 'poppins',sans-serif;">
-          
-            <a href="{% url 'staff:login' %}" class="a-hover">
-              Войти
-            </a>
-          </p>
-          </div>
-        </div>
+{% endblock head %}
+{% block body %}
+<div class="form-container">
+    <h2>Sign Up</h2>
+    <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Sign Up</button>
     </form>
-  </div>
-
-    
-{% endblock BODY %}
+</div>
+{% endblock %}

@@ -12,8 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 from . import local_settings
-#print(environ.get("DJANGO_DEBUG",False))
-
+from django.urls import reverse_lazy
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,26 +26,28 @@ SECRET_KEY = local_settings.SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = local_settings.DEBUG
 
-ALLOWED_HOSTS = local_settings.ALOWED_HOSTS
+ALLOWED_HOSTS = ['SergeyDeryabin.pythonanywhere.com' , '127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'crispy_forms',
+    'crispy_bootstrap5',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'dirictories',
+    'directories',
     'staff',
+    'book',
     'homepage',
     'cart',
-   
+    'user_profile',
+    'search'
 ]
-CRISPY_ALLOWED_TEMPLATE_PACK = 'bootstrap5'
-CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -56,7 +57,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'cart.middlewares.ShoppingCartMiddleware',
 ]
 
 ROOT_URLCONF = 'proj.urls'
@@ -76,9 +76,13 @@ TEMPLATES = [
         },
     },
 ]
+
+
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    BASE_DIR / "static"
 ]
+
+
 WSGI_APPLICATION = 'proj.wsgi.application'
 
 
@@ -128,8 +132,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-
+# STATIC_ROOT ='/home/static'
 MEDIA_URL = 'media/'
+# MEDIA_ROOT = '/home/media'
+#MEDIA_ROOT = local_settings.MEDIA_ROOT
 
 
 
@@ -137,4 +143,7 @@ MEDIA_URL = 'media/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = "/"
+LOGIN_URL = reverse_lazy('staff:login')
+CRISPY_ALLOWED_TEMPLATE_PACK = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'

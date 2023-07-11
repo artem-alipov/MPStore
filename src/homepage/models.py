@@ -1,4 +1,4 @@
 from django.db import models
-from dirictories.models import Book
+from directories.models import Book
 
 # Create your models here.

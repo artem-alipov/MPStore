@@ -1,26 +1,26 @@
-from typing import Optional
-from django.shortcuts import render, redirect
-from django.urls import reverse_lazy, reverse
-from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView
-from django.contrib.auth import views as auth_views
-from django.views.generic import View
-from django.http import HttpResponseRedirect
+from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.forms import AuthenticationForm
+from django.urls import reverse_lazy
+from django.contrib.auth.models import User
+from directories import views
+from django.shortcuts import redirect
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+from django.views import generic
 
-from dirictories.models import Book
-
-
-# Create your views here.
-
-class LoginView(auth_views.LoginView):
-    template_name = "staff/login.html"
-
-
-class LogoutView(auth_views.LogoutView):
-    next_page = 'homepage'
-
-
-class SignUp(CreateView):
+#Login
+class CustomLoginView(LoginView):
+    template_name = 'auntification/login.html'
+    
+    
+#Logout
+class CustomLogoutView(LogoutView):
+    template_name = 'auntification/logout.html'
+    
+    
+#Signup    
+class SignUpView(generic.CreateView):
     form_class = UserCreationForm
-    success_url = reverse_lazy("staff:login")
-    template_name = "staff/signup.html"
+    success_url = reverse_lazy('staff:login')
+    template_name = 'auntification/signup.html'

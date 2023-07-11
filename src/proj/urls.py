@@ -16,17 +16,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from homepage import views as  homepage_views
 from django.conf import settings 
 from django.conf.urls.static import static
+from homepage  import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('dirctories/', include('dirictories.urls', namespace='dirictories')),
-    path('staff/', include('staff.urls', namespace='staff')),
-    path('cart/', include('cart.urls', namespace='cart')),
-    path('', homepage_views.HomePage.as_view(), name= 'homepage'),
-
-] 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('', views.HomePage.as_view(), name='home'),
+    path('directories/', include('directories.urls'), name='directories'),
+    path('hp/', include('homepage.urls'), name='hp'),
+    path('cart/', include('cart.urls'), name='cart'),
+    path('book/', include('book.urls'), name='book'),
+    path('search/', include('search.urls'), name='search'),
+    path('profile/', include('user_profile.urls'), name='profile'),
+    path('staff/', include('staff.urls'), name='staff'),
+    path('success', views.success_page, name='success.html'),
+    path('oh_no_problem', views.Oh_no_problem.as_view(), name='oh_no_problem.html'),
+    
+  
+]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

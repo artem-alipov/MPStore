@@ -1,16 +1,9 @@
 from django.contrib import admin
+from . import models
 
 # Register your models here.
-from .models import Cart, BookInOrder, Order
-
-admin.site.register(BookInOrder)
-admin.site.register(Order)
 
 
-@admin.register(Cart)
-class CartAdmin(admin.ModelAdmin):
-    list_display = (
-        "id",
-        "user",
-        "get_total_price"
-    )
+admin.site.register(models.BookInCart)
+admin.site.register(models.Cart)
+admin.site.register(models.Order)

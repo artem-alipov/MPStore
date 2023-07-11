@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
 
-{% block TITLE %}MOoShop{% endblock TITLE %}
-
-{% block BODY %}
-
-
-{% include 'MPShop/book/includes/container_book.html' %}
-
-
-{% endblock BODY %}
+{% block body %}
+<a href="{% url 'directories:view_author.html' %}">Authors</a><br>
+<a href="{% url 'directories:view_genres.html' %}">Genres</a><br>
+<a href="{% url 'directories:view_series.html' %}">Series</a><br>
+<a href="{% url 'directories:view_publishing.html' %}">Publishing</a><br>
+<h2>{{  user }} </h2>
+    
+{% endblock %}
