@@ -9,7 +9,6 @@ from user_profile.models import CustomerProfile
 
 #Модель(первая часть корзины), из нее берем книги(из книг вытягивать имя, цену), количество
 class BookInCart(models.Model):
-    # Через переменную book связываемся с моделью Book для вытягивания нужных нам данных
     book = models.ForeignKey(
         to=Book, 
         on_delete=models.CASCADE

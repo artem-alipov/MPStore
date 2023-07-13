@@ -20,7 +20,7 @@ class Book(models.Model):
         verbose_name="Book image"
     )
 
-    # Цена (BYN)
+    # Цена 
     price = models.DecimalField(
         max_digits = 8, 
         decimal_places = 2,
@@ -28,7 +28,7 @@ class Book(models.Model):
         verbose_name="Book price"
     )
 
-    # Авторы книги (может содержать несколько авторов) - справочник
+    # Авторы книги  - справочник
     authors = models.ForeignKey(
         to = Author,
         on_delete=models.CASCADE,
@@ -42,7 +42,7 @@ class Book(models.Model):
         verbose_name="Book series"
     )
 
-    # Жанры (один или несколько жанров) - справочник
+    # Жанры  - справочник
     genres = models.ForeignKey(
         to = Genres,
         on_delete=models.CASCADE,

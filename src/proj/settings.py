@@ -26,14 +26,12 @@ SECRET_KEY = local_settings.SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = local_settings.DEBUG
 
-ALLOWED_HOSTS = ['SergeyDeryabin.pythonanywhere.com' , '127.0.0.1']
+ALLOWED_HOSTS = ['alipovartem1111.pythonanywhere.com' , '127.0.0.8']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'crispy_forms',
-    'crispy_bootstrap5',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,12 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'directories',
+    'crispy_forms',
+    'django_bootstrap5',
     'staff',
     'book',
     'homepage',
     'cart',
     'user_profile',
-    'search'
 ]
 
 MIDDLEWARE = [
