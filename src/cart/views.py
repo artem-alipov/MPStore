@@ -20,7 +20,7 @@ class CartView(generic.TemplateView):
     #Отображения содержимого корзины
     def get_context_data(self, **kwargs):
         pk = self.request.session.get("cart_id")
-        print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+        print("")
         context = super().get_context_data(**kwargs)
         user = self.request.user
         if user.is_anonymous:
@@ -34,7 +34,7 @@ class CartView(generic.TemplateView):
         return context
     
     
-    #Отображение всех заказов, если аноним, заказ из сессии
+   
     def orders_all(request):
         order_id=request.session['order_id']
         print("order id", order_id)
@@ -79,20 +79,8 @@ class CartUpdateView(generic.DetailView):
         cart = models.Cart.objects.get(pk=pk)
         cart.phone=phone_number
         cart.save()
-        return redirect('cart:cart_view')  
-       
-        
-    #Удаление книги из корзины
-    def delete_book(request, cart_id, item_id):
-        cart = models.Cart.objects.get(pk=cart_id)
-        print("2,1", cart)
-        item = cart.books.get(id=item_id)
-        print("2,2", item)
-        item.delete()
-        return redirect('cart:cart_view')
-    
-    
-    #Создание заказа
+        return redirect('cart:cart_view')        
+       #Создание заказа
     
     def create_order(self, cart_id):
         order_id = self.session.get('order_id')
@@ -115,7 +103,7 @@ class CartUpdateView(generic.DetailView):
         return redirect('book:book_view_all.html')
  
      
-# Добавление книги в корзину    
+# Добавление  в корзину    
 class AddBookToCart(generic.DetailView):
     def get(self, request, *args, **kwargs):
         order_id = request.session.get('order_id')
@@ -126,14 +114,14 @@ class AddBookToCart(generic.DetailView):
         print(user)
         if user.is_anonymous:
             user=None
-            print("заходит в цикл анонимус")
+            print("")
             print(pk, type(pk))
             cart, created = models.Cart.objects.get_or_create(pk=pk)
-            print("заходит в циклпк из нон")
+            print("")
             self.request.session['cart_id'] = cart.pk  
             print(self.request.session['cart_id'])
         elif request.user.is_authenticated:
-            print("here is auntificated")
+            print("")
             cart, created = models.Cart.objects.get_or_create(user=user)
         book_pk = kwargs.get("pk")
         book = models.Book.objects.get(pk=book_pk)

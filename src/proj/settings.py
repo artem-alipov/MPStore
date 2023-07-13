@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 from . import local_settings
+from . local_settings import *
 from django.urls import reverse_lazy
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +27,7 @@ SECRET_KEY = local_settings.SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = local_settings.DEBUG
 
-ALLOWED_HOSTS = ['alipovartem1111.pythonanywhere.com' , '127.0.0.1']
+ALLOWED_HOSTS = local_settings.ALOWED_HOSTS
 
 
 # Application definition
@@ -135,7 +136,7 @@ STATIC_URL = 'static/'
 STATIC_ROOT ='/home/static'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = '/home/media'
-
+STATICFILES_DIRS=[ BASE_DIR / "static",]
 
 
 
