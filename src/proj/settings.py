@@ -26,7 +26,7 @@ SECRET_KEY = local_settings.SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = local_settings.DEBUG
 
-ALLOWED_HOSTS = ['alipovartem1111.pythonanywhere.com' , '127.0.0.8']
+ALLOWED_HOSTS = ['alipovartem1111.pythonanywhere.com' , '127.0.0.1']
 
 
 # Application definition
@@ -94,6 +94,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 
 # Password validation

@@ -8,7 +8,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('book', '0003_alter_book_rating'),
+        
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
         ('cart', '0003_remove_bookincart_price_order_price'),
     ]

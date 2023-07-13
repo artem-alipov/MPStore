@@ -23,6 +23,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='order',
             name='status',
-            field=models.CharField(blank=True, choices=[('In process', 'In process'), ('Something wrong', 'Something wrong'), ('Ready', 'Ready')], max_length=255, verbose_name='Order status'),
+            field=models.CharField(blank=True, choices=[('In process', 'In process'), ('Ready', 'Ready')], 
+            max_length=255, verbose_name='Order status'),
         ),
     ]
